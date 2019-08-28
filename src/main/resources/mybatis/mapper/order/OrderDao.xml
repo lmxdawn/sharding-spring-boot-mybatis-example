@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.dao.OrderDao">
+
+    <select id="listByUid" resultType="com.example.demo.entity.Order">
+        SELECT id,order_id,uid,`money`,`status`,create_time,modified_time
+        FROM `order`
+        where uid = #{uid}
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="findByOrderIdAndUid" resultType="com.example.demo.entity.Order">
+        SELECT id,order_id,uid,`money`,`status`,create_time,modified_time
+        FROM `order`
+        where
+        order_id = #{orderId}
+        and uid = #{uid}
+        limit 1
+    </select>
+
+    <insert id="insertOrder" keyProperty="id" parameterType="com.example.demo.entity.Order">
+        INSERT INTO `order`(order_id,uid,`money`,`status`,create_time,modified_time)
+        VALUES
+        (#{orderId},
+        #{uid},
+        #{money},
+        #{status},
+        #{createTime},
+        #{modifiedTime})
+    </insert>
+
+    <update id="updateOrder" parameterType="com.example.demo.entity.Order">
+        UPDATE `order`
+        <set>
+            <if test="money != null">`money`=#{money},</if>
+            <if test="status != null">`status`=#{status},</if>
+            modified_time=#{modifiedTime}
+        </set>
+        WHERE order_id=#{orderId}
+    </update>
+
+
+    <delete id="deleteByOrderId" parameterType="long">
+        delete from `order` where order_id=#{orderId}
+    </delete>
+
+</mapper>

@@ -2,7 +2,7 @@
 
 项目初期没有强大的 DBA, 随着用户增加, 订单表越来越大, MySQL 的主机负载一直下不来, 导致吞吐降低
 
-- GitHub 地址: https://github.com/lmxdawn/sharding-spring-boot-mybatis-example
+- GitHub 地址: [https://github.com/lmxdawn/sharding-spring-boot-mybatis-example](https://github.com/lmxdawn/sharding-spring-boot-mybatis-example)
 
 # 订单业务分析
 
